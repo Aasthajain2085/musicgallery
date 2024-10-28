@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify - Music Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: linear-gradient(45deg, #191414, #1DB954);
+            color: #f0f0f0;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            transition: background 0.5s, color 0.5s;
+            
+
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+            padding: 20px;
+            border-radius: 25px;
+            border: 5px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            
+        }
+.container::before{
+    content: '';
+    position: absolute;
+    content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, #1DB954, #1ED760, #9f5b5b);
+            z-index: -1;
+            border-radius: 30px;
+            animation: borderAnimation 5s linear infinite;
+}
+@keyframes borderAnimation {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+        .title {
+            font-size: 3rem;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            background: linear-gradient(90deg, #101111, #0f381d);
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: slideInTitle 1.5s ease forwards;
+        }
+
+        .search-bar {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .search-bar input {
+            width: 80%;
+            padding: 15px;
+            border: none;
+            border-radius: 25px;
+            outline: none;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-bar button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            background: #1DB954;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .search-bar button:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: rgba(44, 44, 44, 0.85);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s;
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .card:hover {
+          
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 15px 5px #d5f408;
+        }
+
+        .card img {
+            width: 100%;
+            
+            border-radius: 15px 15px 0 0;
+            
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin: 15px;
+            color: #eef5f1;
+            text-transform: capitalize;
+        }
+
+        .play-button {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 25px;
+            background: #1DB954;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+            margin-bottom: 15px;
+        }
+
+        .play-button:hover {
+            transform: scale(1.05);
+            background: #1ED760;
+        }
+
+        .latest-updates {
+            margin-top: 50px;
+        }
+
+        .latest-updates h2 {
+            font-size: 2rem;
+            color: #e8f3ec;
+            background: linear-gradient(90deg, #1DB954, #1ED760);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .update-card {
+            background: rgba(64, 64, 64, 0.85);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .update-card:hover {
+            transform: scale(1.02);
+        }
+
+        .update-card h3 {
+            font-size: 1.3rem;
+            color:  #1DB954;
+        }
+
+        .update-card p {
+            font-size: 0.95rem;
+            color: #ddd;
+        }
+
+        .update-card a {
+            color: #1DB954;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .update-card a:hover {
+            color: #1ED760;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInTitle {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+          
+        
+        }
+        .dark-mode-container {
+            display: flex;
+            justify-content: flex-end;
+            margin: 10px;
+        }
+
+        .dark-mode-toggle {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 15px;
+            background: #3d403e;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dark-mode-toggle i {
+            margin-right: 10px;
+        }
+
+        .dark-mode-toggle:hover {
+            background: #1ED760;
+        }
+        /* .dark-mode {
+            background: linear-gradient(45deg, #333, #444);
+            color: #e0e0e0;
+        } */
+         .update{
+            color: #ddd;
+            background: #101111;
+         }
+    </style>
+    <script >
+          let currentAudio = null;
+
+function playMusic(audioId, button) {
+    const audio = document.getElementById(audioId);
+    const card = button.closest('.card');
+
+    if (currentAudio && currentAudio !== audio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        button.textContent = 'Play';
+        currentAudio = null;
+    }
+
+    if (audio.paused) {
+        audio.play();
+        button.textContent = 'Pause';
+        currentAudio = audio;
+    } else {
+        audio.pause();
+        button.textContent
+    }
+}
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <button id="darkModeToggle" class="dark-mode-toggle">
+            <i class="fas fa-moon"></i> Dark Mode
+        </button>
+        <h1 class="title">JUST VIBING</h1>
+        <div class="dark-mode-container">
+            <!-- <button id="darkModeToggle" class="dark-mode-toggle">
+                <i class="fas fa-moon"></i> Toggle Dark Mode
+            </button> -->
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search for songs, artists...">
+            <button>Search</button>
+        </div>
+        <div class="gallery">
+            <div class="card">
+                <img src="mu3.jpeg" alt="Music Cover 1">
+                <h3>ghagra crew</h3>
+                <button class="play-button" onclick="playMusic('audio1', this)">Play</button>
+                <audio id="audio1" src="128-Ghagra - Crew 128 Kbps.mp3"></audio>
+            </div>
+            <div class="card">
+                <img src="mu6.jpeg" alt="Music Cover 2">
+                <h3>hauli hauli</h3>
+                <button class="play-button" onclick="playMusic('audio2', this)">Play</button>
+                <audio id="audio2" src="128-Hauli Hauli - Khel Khel Mein 128 Kbps.mp3"></audio>
+            </div>
+            <div class="card">
+                <img src="mu8.jpeg" alt="Music Cover 1">
+                <h3>halki halki</h3>
+                <button class="play-button" onclick="playMusic('audio1', this)">Play</button>
+                <audio id="audio1" src="128-Halki Halki Si - Asees Kaur 128 Kbps.mp3"></audio>
+            </div>
+            <div class="card">
+                <img src="mu0009.jpeg" alt="Music Cover 1">
+                <h3>bhool Bhulaiyaa</h3>
+                <button class="play-button" onclick="playMusic('audio1', this)">Play</button>
+                <audio id="audio1" src="128-Bhool Bhulaiyaa 3 - Title Track (Feat. Pitbull) - Bhool Bhulaiyaa 3 128 Kbps.mp3"></audio>
+            </div>
+            <div class="card">
+                <img src="mu04.jpg" alt="Music Cover 1">
+                <h3>angarron</h3>
+                <button class="play-button" onclick="playMusic('audio1', this)">Play</button>
+                <audio id="audio1" src="128-Angaaron - Pushpa 2 The Rule 128 Kbps.mp3"></audio>
+            </div>
+            <div class="card">
+                <img src="mu1.jpg" alt="Music Cover 1">
+                <h3>neendaram</h3>
+                <button class="play-button" onclick="playMusic('audio1', this)">Play</button>
+                <audio id="audio1" src="128-Khudaya - Sarfira 128 Kbps.mp3"></audio>
+            </div>
+            <div class="card">
+                <img src="mu08.jpeg" alt="Music Cover 1">
+                <h3>pushpa</h3>
+                <button class="play-button" onclick="playMusic('audio1', this)">Play</button>
+                <audio id="audio1" src="128-Pushpa Pushpa - Pushpa 2 The Rule 128 Kbps.mp3"></audio>
+            </div>
+            <div class="card">
+                <img src="mu01.jpg" alt="Music Cover 3">
+                <h3>agar ho tum</h3>
+                <button class="play-button" onclick="playMusic('audio3', this)">Play</button>
+                <audio id="audio3" src="music1.mp3"></audio>
+            </div>
+        </div>
+        <div class="latest-updates">
+            <marquee><h2 class="update">Latest Updates</h2></marquee>
+            <div class="update-card">
+                <h3>New Releases This Week</h3>
+                <p>Catch the hottest new releases by your favorite artists this week!</p>
+                <a href="#">Explore</a>
+            </div>
+            <div class="update-card">
+                <h3>Top 10 Songs in Your Area</h3>
+                <p>Discover the most popular songs in your region right now.</p>
+                <a href="#">Check Top 10</a>
+            </div>
+            <div class="update-card">
+                <h3>Live Concerts Near You</h3>
+                <p>Find out about live concerts happening in your city and book your tickets.</p>
+                <a href="#">Get Tickets</a>
+            </div>
+            <div class="update-card">
+                <h3>Exclusive Artist Interviews</h3>
+                <p>Read about the stories behind your favorite tracks from artists.</p>
+                <a href="#">Read Interviews</a>
+            </div>
+            <div class="update-card">
+                <h3>Behind the Scenes</h3>
+                <p>Get an inside look at how your favorite songs are made.</p>
+                <a href="#">Watch Now</a>
+            </div>
+        </div>
+    </div>
+
+    </body>
+      
+      

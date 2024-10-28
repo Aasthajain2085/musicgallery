@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(45deg, #1DB954, #191414);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-container, .updates-container {
+            background: rgba(25, 20, 20, 0.95);
+            border-radius: 15px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .title {
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-family: Broadway;
+            letter-spacing: 3px;
+            background: linear-gradient(90deg, #1DB954, #1ed760, #A7E441);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 15px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #1DB954, #1ed760);
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 20px rgba(29, 185, 84, 0.4);
+            transition: transform 0.3s, background 0.4s;
+        }
+
+        .login-container button:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #1dbb8a, #19a773);
+        }
+
+        .login-container p {
+            color: #adeb8f;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .login-container a {
+            color: #d3f3de;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .login-container a:hover {
+            color: #e7eee9;
+        }
+
+        .updates-container {
+            text-align: left;
+        }
+
+        .update-card {
+            background: #333;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .update-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .update-card h3 {
+            color: #fff;
+            font-size: 1.3rem;
+        }
+
+        .update-card p {
+            color: #ddd;
+            font-size: 0.95rem;
+        }
+
+        .update-card a {
+            color: #1DB954;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            transition: color 0.3s;
+        }
+
+        .update-card a:hover {
+            color: #e4ece7;
+        }
+
+        @media (max-width: 600px) {
+            .login-container {
+                padding: 30px 20px;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+        }
+       h1{
+        font-size: 70px;
+        padding-bottom: 40px;
+        padding-top: 20px;
+        color: #1DB954;
+        font-family: Rockwell Extra Bold;
+       }
+    </style>
+    
+</head>
+<body>
+    <script>
+        function login() {
+           
+            window.location.href = "musicgallery.html";
+        }
+    </script>
+     <center><h1>JUST VIBING</h1></center>
+    <div class="login-container">
+       
+        <h1 class="title">log in</h1>
+        <form>
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit" ><a href="musicgallery.html">log in</a></button>
+            <p>Don't have an account? <a href="#">Sign up</a></p>
+        </form>
+    </div>
+
+    <div class="updates-container">
+       <marquee><h2 style="color: #fff; text-align: center;">Latest Updates</h2></marquee>
+        <div class="update-card">
+            <h3>New Playlist Feature</h3>
+            <p>Explore our new feature that lets you create custom playlists and share them with your friends!</p>
+            <a href="#">Learn more</a>
+        </div>
+        <div class="update-card">
+            <h3>Upcoming Concerts</h3>
+            <p>Check out the latest concerts in your city and book your tickets now to enjoy live performances.</p>
+            <a href="#">View Concerts</a>
+        </div>
+        <div class="update-card">
+            <h3>Exclusive Artist Releases</h3>
+            <p>Get early access to exclusive music releases from your favorite artists on Spotify Premium.</p>
+            <a href="#">Upgrade Now</a>
+        </div>
+    </div>
+</body>
+</html>
